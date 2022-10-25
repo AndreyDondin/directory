@@ -21,12 +21,10 @@ export default function useFilter() {
     const offset = (page - 1) * 5;
     const value = event.target.value.toLowerCase();
     filterListCompany.value = [];
-    for (const object of companyList.value) {
-      if (object.owner.toLowerCase().includes(value)) {
-        filterListCompany.value.push(object);
-      }
-    }
-    filterListCompany.value = filterListCompany.value.slice(offset, offset + 5);
+
+    filterListCompany.value = companyList.value
+      .filter((obj) => obj.owner.includes(value))
+      .slice(offset, offset + 5);
   };
   const getCompanyListPage = (page) => {
     const offset = (page - 1) * 5;

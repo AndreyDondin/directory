@@ -38,7 +38,6 @@ import CompanyTable from '@/components/CompanyTable.vue';
 import ModalWindow from '@/components/ModalWindow.vue';
 import useFilter from '@/hooks/useFilter';
 import { useStore } from 'vuex';
-
 export default defineComponent({
   components: { CompanyTable, ModalWindow },
   setup() {
@@ -55,20 +54,17 @@ export default defineComponent({
       companyList,
       getCompanyListPage,
     } = useFilter();
-
     const nextPage = () => {
       page.value += 1;
     };
     const prevPage = () => {
       page.value -= 1;
     };
-
     watchEffect(() => {
       companyList.value = store.getters.getCompanyList;
       btnDisabled.value = page.value >= Math.ceil(companyList.value.length / 5);
       getCompanyListPage(page.value);
     });
-
     return {
       modalIsOpen,
       openModal,
@@ -118,7 +114,6 @@ export default defineComponent({
     font-size: 30px;
     background: transparent;
     border: none;
-
     &:disabled {
       cursor: not-allowed;
     }

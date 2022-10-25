@@ -36,7 +36,6 @@ import { computed, defineComponent, ref } from 'vue';
 import CompanyItem from '@/components/CompanyItem.vue';
 import { useStore } from 'vuex';
 import useFilter from '@/hooks/useFilter';
-
 export default defineComponent({
   components: { CompanyItem },
   props: ['filterList'],
@@ -54,7 +53,6 @@ export default defineComponent({
           )
         : store.getters.getCompanyList
     );
-
     const sortName = () => {
       if (!dir.value) {
         sort('name', dir.value);
@@ -64,7 +62,6 @@ export default defineComponent({
         dir.value = !dir.value;
       }
     };
-
     const sortOwner = () => {
       if (!otherDir.value) {
         sort('owner', otherDir.value);
@@ -74,7 +71,6 @@ export default defineComponent({
         otherDir.value = !otherDir.value;
       }
     };
-
     return {
       companyList,
       sortName,
@@ -95,7 +91,6 @@ td,
 th {
   border: 1px solid #2c3e50;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -113,7 +108,6 @@ table {
   &__table-thead {
     background-color: #b8b4b4;
   }
-
   &__table-th {
     padding: 20px;
     font-size: 20px;
